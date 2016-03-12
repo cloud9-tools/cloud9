@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package cloud9.proto;
+
+message Instant {
+  uint64 seconds = 1;
+  uint32 nanos = 2;
+}
+
+message User {
+  uint64 id = 1;
+  string name = 2;
+  string full_name = 3;
+}
+
+message Branch {
+  uint64 id = 1;
+  string name = 2;
+  repeated uint64 commits = 3;
+}
+
+message Commit {
+  uint64 id = 1;
+  uint64 root = 2;
+  uint64 user = 3;
+  Instant at = 4;
+  string description = 5;
+  map<string, string> tags = 6;
+}
+
+message Root {
+  uint64 id = 1;
+}
+
+message File {
+  string path = 1;
+  string content_type = 2;
+  uint64 blob = 3;
+}
